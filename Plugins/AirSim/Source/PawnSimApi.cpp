@@ -14,6 +14,13 @@
 #include "Materials/MaterialParameterCollectionInstance.h"
 #include "DrawDebugHelpers.h"
 
+//modified code starts from here
+#include "AirSimCustomizedController.h"
+#include "CoreMinimal.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
+//modified code ends here
+
 PawnSimApi::PawnSimApi(const Params& params)
     : params_(params), ned_transform_(params.pawn, *params.global_transform)
 {
@@ -198,7 +205,19 @@ msr::airlib::RCData PawnSimApi::getRCData() const
     rc_data_.is_initialized = joystick_state_.is_initialized;
     rc_data_.is_valid = joystick_state_.is_valid;
 
-    if (rc_data_.is_valid) {
+    //modified code starts from here
+    bool OverrideFlightRoute = false;
+    AAirSimCustomizedController* tmp = nullptr;
+    UWorld* world = GEngine->GameViewport->GetWorld(); // ¡û this is the magic line!
+    if (world != nullptr) {
+        tmp = Cast<AAirSimCustomizedController>(UGameplayStatics::GetPlayerController(world, 0));
+        if (tmp != nullptr) {
+            OverrideFlightRoute = tmp->OverrideFlightRoute;
+        }
+    }
+    //modified code ends here
+
+    if (rc_data_.is_valid && !OverrideFlightRoute) {
         //-1 to 1 --> 0 to 1
         rc_data_.throttle = (joystick_state_.left_y + 1) / 2;
 
@@ -223,6 +242,22 @@ msr::airlib::RCData PawnSimApi::getRCData() const
         UAirBlueprintLib::LogMessageString("RC Mode: ", rc_data_.getSwitch(0) == 0 ? "Angle" : "Rate", LogDebugLevel::Informational);
     }
     //else don't waste time
+    //modified code starts from here
+    if (OverrideFlightRoute) {
+        if (tmp != nullptr) {
+            FRCData_BP RC_Data = tmp->RCData_BP;
+            rc_data_.throttle = RC_Data.throttle;
+            rc_data_.yaw = RC_Data.left_x;
+            rc_data_.roll = RC_Data.right_x;
+            rc_data_.pitch = -RC_Data.right_y;
+            rc_data_.left_z = RC_Data.left_z;
+            rc_data_.right_z = RC_Data.right_z;
+            rc_data_.is_initialized = true;
+            rc_data_.is_valid = true;
+        }
+    }
+
+    //modified code ends here
 
     return rc_data_;
 }
