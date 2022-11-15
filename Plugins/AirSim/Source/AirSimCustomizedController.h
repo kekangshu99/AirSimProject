@@ -50,4 +50,7 @@ public:
     UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
         FRCData_BP RCData_BP;
 
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+        FVector Wind_Direction;
+
 };

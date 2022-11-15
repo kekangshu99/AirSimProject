@@ -5,7 +5,17 @@
     <projectFile>Intermediate/ProjectFiles/UE4.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bac35c7-b61a-4c97-849a-c4093083acf0" name="Changes" comment="" />
+    <list default="true" id="1bac35c7-b61a-4c97-849a-c4093083acf0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AirSimProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AirSimProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CustomAssets/AirSimCustomControllerBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/CustomAssets/AirSimCustomControllerBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CustomAssets/Particle/Smoke.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/CustomAssets/Particle/Smoke.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CustomAssets/Particle/SmokeChild/Smoke_4.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/CustomAssets/Particle/Smoke_Manager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/CustomAssets/Particle/Smoke_Manager.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LandscapeMap_2.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LandscapeMap_2.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/LandscapeMap_2_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/LandscapeMap_2_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/AirSim/Source/AirLib/include/common/AirSimSettings.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/AirSim/Source/AirLib/include/common/AirSimSettings.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/AirSim/Source/AirSimCustomizedController.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/AirSim/Source/AirSimCustomizedController.h" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -453,6 +463,8 @@
       <workItem from="1664255795037" duration="1000" />
       <workItem from="1664836357638" duration="730000" />
       <workItem from="1665350680029" duration="7000" />
+      <workItem from="1665446470070" duration="606000" />
+      <workItem from="1666041616919" duration="3320000" />
     </task>
     <servers />
   </component>

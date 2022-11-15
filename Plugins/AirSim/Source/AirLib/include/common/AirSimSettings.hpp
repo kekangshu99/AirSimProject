@@ -15,6 +15,11 @@
 #include <string>
 #include <vector>
 
+//modified code starts from here
+#include "AirSimCustomizedController.h"
+#include "Kismet/KismetMathLibrary.h"
+#include "CoreMinimal.h"
+
 namespace msr
 {
 namespace airlib
@@ -1201,6 +1206,18 @@ namespace airlib
                 Settings child_json;
                 if (settings_json.getChild("Wind", child_json)) {
                     wind = createVectorSetting(child_json, wind);
+                    //modified code starts from here
+                    AAirSimCustomizedController* Tmp = nullptr;
+                    UWorld* World = GEngine->GameViewport->GetWorld(); // ← this is the magic line!
+                    if (World != nullptr)
+                    {
+                        Tmp = Cast<AAirSimCustomizedController>(UGameplayStatics::GetPlayerController(World, 0));
+                        if(Tmp != nullptr){
+                            Tmp->Wind_Direction.X = wind.x();
+                            Tmp->Wind_Direction.Y = wind.y();
+                            Tmp->Wind_Direction.Z = wind.z();
+                        }
+                    }
                 }
             }
         }
